@@ -1,29 +1,34 @@
 package com.melexis.test.machineeventreporting.machine.event.domain;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Value;
+
 import java.util.List;
 
-@Getter
-class Machine {
+@Value
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
+public class Machine {
 
-	private String id;
-	private MachineType type;
-	private List<Error> errorList;
+	String id;
+	MachineType type;
+	List<MachineError> errorList;
 
-	enum MachineType {
+	public enum MachineType {
 		MACHINE_TYPE1("t1"),
 		MACHINE_TYPE2("t2"),
 		MACHINE_TYPE3("t_new"),
 		OTHER_TYPE("o1"),
 		AND_ANOTHER_ONE("another2");
 
-		private final String id;
+		private final String value;
 
-		MachineType(String id) {
-			this.id = id;
+		MachineType(String value) {
+			this.value = value;
 		}
-		public String getId() {
-			return id;
+		public String getValue() {
+			return value;
 		}
 	}
 }
