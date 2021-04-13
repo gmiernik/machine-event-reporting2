@@ -1,15 +1,16 @@
 package com.melexis.test.machineeventreporting.machine.event.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 
 @Value
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class ErrorDefinition {
 	ErrorCode code;
 	String detail;
+
+	public static ErrorDefinition create(ErrorCode code, String detail) {
+		return new ErrorDefinition(code, detail);
+	}
 
 	@Value
 	public static class ErrorCode {

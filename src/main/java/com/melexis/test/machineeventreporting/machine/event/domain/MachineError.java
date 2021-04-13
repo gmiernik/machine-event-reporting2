@@ -13,4 +13,8 @@ public class MachineError {
 	ErrorDefinition definition;
 	Date timeStamp;
 	Machine machine;
+
+	public static MachineError create(String id, ErrorDefinition errorDefinition, Date timeStamp, Machine machine) {
+		return new MachineError(id, errorDefinition, timeStamp, machine);
+	}
 }

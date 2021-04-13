@@ -8,9 +8,9 @@ import org.springframework.util.Assert;
 
 import java.util.Date;
 
-class SendMachineMachineErrorServiceTest {
+class SendMachineMachineEntityErrorEntityServiceTest {
 
-    private final MachineEventRepository machineEventRepository = new InMemoryMachineEventRepository();
+    private final MachineEventRepository machineEventRepository = new InMemoryMachineEventAdapter();
     private final SendMachineErrorUseCase sendMachineErrorUseCase = new SendMachineErrorService(machineEventRepository);
 
     @Test

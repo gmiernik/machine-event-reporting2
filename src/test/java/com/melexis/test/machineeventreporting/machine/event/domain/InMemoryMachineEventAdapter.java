@@ -5,7 +5,7 @@ import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEven
 import java.util.Date;
 import java.util.HashMap;
 
-public class InMemoryMachineEventRepository implements MachineEventRepository {
+public class InMemoryMachineEventAdapter implements MachineEventRepository {
     private HashMap<String, MachineError> data = new HashMap<>();
 
     @Override

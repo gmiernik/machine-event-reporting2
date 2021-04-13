@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Value
@@ -14,6 +15,10 @@ public class Machine {
 	String id;
 	MachineType type;
 	List<MachineError> errorList;
+
+	public static Machine create(String machineId, MachineType machineType) {
+		return new Machine(machineId, machineType, new ArrayList<>());
+	}
 
 	public enum MachineType {
 		MACHINE_TYPE1("t1"),
