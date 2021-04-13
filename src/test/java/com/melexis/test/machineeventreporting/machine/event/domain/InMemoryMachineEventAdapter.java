@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class InMemoryMachineEventAdapter implements MachineEventRepository {
-    private HashMap<String, MachineError> data = new HashMap<>();
+    private final HashMap<String, MachineError> data = new HashMap<>();
 
     @Override
     public void addMachineError(MachineError error) {
