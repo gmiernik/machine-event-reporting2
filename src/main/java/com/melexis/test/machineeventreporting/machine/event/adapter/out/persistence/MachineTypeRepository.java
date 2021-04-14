@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface MachineRepository extends JpaRepository<MachineEntity, Integer> {
-    @Query("select m from MachineEntity m where m.machineId = :machineId")
-    Optional<MachineEntity> findByMachineId(@Param("machineId") String machineId);
+public interface MachineTypeRepository extends JpaRepository<MachineTypeEntity, Integer> {
+    @Query("select mt from MachineTypeEntity mt where mt.name = :typeName")
+    Optional<MachineTypeEntity> findByName(@Param("typeName") String typeName);
 }

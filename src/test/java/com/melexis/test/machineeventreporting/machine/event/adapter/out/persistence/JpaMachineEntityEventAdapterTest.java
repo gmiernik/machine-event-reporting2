@@ -21,16 +21,15 @@ public class JpaMachineEntityEventAdapterTest {
 
     @Test
     public void testAddErrorDefinition() {
-        final ErrorDefinition.ErrorCode errorCode = new ErrorDefinition.ErrorCode(123);
         final String errorDetail = "test_123";
         final String machineId = "MACHINE_123";
         final ZonedDateTime timeStamp = ZonedDateTime.now();
-        ErrorDefinition errorDefinition = ErrorDefinition.create(errorCode, errorDetail);
+        ErrorDefinition errorDefinition = ErrorDefinition.create(errorDetail);
         adapter.addMachineError(MachineError.create("00123", errorDefinition, timeStamp,
                 Machine.create(machineId, Machine.MachineType.MACHINE_TYPE3)));
         MachineError error = adapter.findByCodeAndTime(machineId, timeStamp);
         Assert.notNull(error, "Cannot find error object");
-        Assert.isTrue(errorCode.getValue() == error.getDefinition().getCode().getValue(), "Different error code");
         Assert.isTrue(error.getMachine().getId().equals(machineId), "Incorrect machine ID");
+        Assert.isTrue(error.getDefinition().getDetail().equals(errorDetail), "Different error detail");
     }
 }

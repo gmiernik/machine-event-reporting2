@@ -12,6 +12,10 @@ public class ErrorDefinition {
 		return new ErrorDefinition(code, detail);
 	}
 
+	public static ErrorDefinition create(String detail) {
+		return new ErrorDefinition(null, detail);
+	}
+
 	@Value
 	public static class ErrorCode {
 		int value;

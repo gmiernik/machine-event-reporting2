@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
+import java.util.Optional;
 
 public interface ErrorRepository extends JpaRepository<ErrorEntity, Integer> {
     @Query("select e from ErrorEntity e where e.machine.machineId = :machineId and e.timeStamp = :timeStamp")
-    ErrorEntity findByCodeAndTime(@Param("machineId") String machineId, @Param("timeStamp") ZonedDateTime timeStamp);
+    Optional<ErrorEntity> findByCodeAndTime(@Param("machineId") String machineId, @Param("timeStamp") ZonedDateTime timeStamp);
 }
