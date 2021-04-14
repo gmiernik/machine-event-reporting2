@@ -2,6 +2,7 @@ package com.melexis.test.machineeventreporting.machine.event.domain;
 
 import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEventRepository;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -14,11 +15,11 @@ public class InMemoryMachineEventAdapter implements MachineEventRepository {
     }
 
     @Override
-    public MachineError findByCodeAndTime(String machineId, Date timeStamp) {
+    public MachineError findByCodeAndTime(String machineId, ZonedDateTime timeStamp) {
         return data.get(getKey(machineId, timeStamp));
     }
 
-    private String getKey(String machineId, Date timeStamp) {
+    private String getKey(String machineId, ZonedDateTime timeStamp) {
         return machineId+":"+timeStamp.toString();
     }
 }

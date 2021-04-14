@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 public class MachineTypeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "type_name")
     private String name;

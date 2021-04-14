@@ -7,6 +7,7 @@ import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEven
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -21,10 +22,15 @@ public class JpaMachineEventAdapter implements MachineEventRepository {
     @Autowired
     private ErrorRepository errorRepository;
 
+    @Autowired
+    private MachineRepository machineRepository;
+
     @Override
     public void addMachineError(MachineError error) {
         ErrorDefinitionEntity errorDefinitionEntity = new ErrorDefinitionEntity();
-        errorDefinitionEntity.setCode(error.getDefinition().getCode().getValue());
+        if (error.getDefinition().getCode() != null) {
+            errorDefinitionEntity.setCode(error.getDefinition().getCode().getValue());
+        }
         errorDefinitionEntity.setDetail(error.getDefinition().getDetail());
         ErrorEntity errorEntity = new ErrorEntity();
         errorEntity.setTimeStamp(error.getTimeStamp());
@@ -32,15 +38,18 @@ public class JpaMachineEventAdapter implements MachineEventRepository {
         errorEntity.setDefinition(errorDefinitionEntity);
         MachineTypeEntity machineTypeEntity = new MachineTypeEntity();
         machineTypeEntity.setName(error.getMachine().getType().name());
-        MachineEntity machineEntity = new MachineEntity();
-        machineEntity.setMachineId(error.getMachine().getId());
+        MachineEntity machineEntity = machineRepository.findByMachineId(error.getMachine().getId());
+        if (machineEntity == null) {
+            machineEntity = new MachineEntity();
+            machineEntity.setMachineId(error.getMachine().getId());
+        }
         machineEntity.setType(machineTypeEntity);
         errorEntity.setMachine(machineEntity);
         errorRepository.save(errorEntity);
     }
 
     @Override
-    public MachineError findByCodeAndTime(String machineId, Date timeStamp) {
+    public MachineError findByCodeAndTime(String machineId, ZonedDateTime timeStamp) {
         ErrorEntity errorEntity = errorRepository.findByCodeAndTime(machineId, timeStamp);
         ErrorDefinition errorDefinition = ErrorDefinition.create(
                 new ErrorDefinition.ErrorCode(errorEntity.getDefinition().getCode()),

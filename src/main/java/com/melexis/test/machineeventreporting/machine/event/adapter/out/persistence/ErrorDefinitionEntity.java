@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Setter
 public class ErrorDefinitionEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer code;
     private String detail;
 }

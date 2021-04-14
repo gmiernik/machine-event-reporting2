@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 @ExtendWith(SpringExtension.class)
@@ -25,7 +27,7 @@ public class JpaMachineEntityEventAdapterTest {
         final ErrorDefinition.ErrorCode errorCode = new ErrorDefinition.ErrorCode(123);
         final String errorDetail = "test_123";
         final String machineId = "MACHINE_123";
-        final Date timeStamp = new Date();
+        final ZonedDateTime timeStamp = ZonedDateTime.now();
         ErrorDefinition errorDefinition = ErrorDefinition.create(errorCode, errorDetail);
         adapter.addMachineError(MachineError.create("00123", errorDefinition, timeStamp,
                 Machine.create(machineId, Machine.MachineType.MACHINE_TYPE3)));

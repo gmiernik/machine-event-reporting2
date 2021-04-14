@@ -2,14 +2,15 @@ package com.melexis.test.machineeventreporting.machine.event.port.in;
 
 import lombok.*;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 
 @Value
 @EqualsAndHashCode
-public class MachineErrorDto {
+@Builder
+public class SendMachineErrorCommand {
     String machineID;
     MachineType machineType;
-    Date dateTime;
+    ZonedDateTime dateTime;
     ErrorType errorType;
 
     public enum ErrorType {
