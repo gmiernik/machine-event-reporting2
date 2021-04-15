@@ -1,5 +1,6 @@
 package com.melexis.test.machineeventreporting.machine.event.domain;
 
+import com.melexis.test.machineeventreporting.machine.event.port.in.MainIssueForSpecificMachine;
 import com.melexis.test.machineeventreporting.machine.event.port.in.ReportPeriod;
 import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEventRepository;
 import com.melexis.test.machineeventreporting.machine.event.port.in.MachineToFocusOn;
@@ -23,6 +24,11 @@ public class InMemoryMachineEventAdapter implements MachineEventRepository {
 
     @Override
     public List<MachineToFocusOn> getMachineToFocusOn(ReportPeriod reportPeriod) {
+        return null;
+    }
+
+    @Override
+    public List<MainIssueForSpecificMachine> getMainIssueForSpecificMachine(ReportPeriod reportPeriod, String machineId) {
         return null;
     }
 

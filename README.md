@@ -4,6 +4,10 @@ Test project of backend services in hexagonal architecture.
 
 ## Change Log
 
+### v0.3.0
+
+- Added `Get main issue for specific machine` use case
+
 ### v0.2.0
 
 - Added `Get Machine to focus on` use case
@@ -27,5 +31,5 @@ spring-boot:run
 Base url: [http://localhost:8080/api/v1/machine/event/]()
 
 - Operation: get machine to focus on => [/api/v1/machine/event/machine-to-focus-on?ndays=22]()
-
+- Operation: main issue for specific machine => [/api/v1/machine/event/main-issue-for-machine?ndays=22&machineId=MACHINE_101]()
 

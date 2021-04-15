@@ -3,6 +3,7 @@ package com.melexis.test.machineeventreporting.machine.event.adapter.out.persist
 import com.melexis.test.machineeventreporting.machine.event.domain.ErrorDefinition;
 import com.melexis.test.machineeventreporting.machine.event.domain.Machine;
 import com.melexis.test.machineeventreporting.machine.event.domain.MachineError;
+import com.melexis.test.machineeventreporting.machine.event.port.in.MainIssueForSpecificMachine;
 import com.melexis.test.machineeventreporting.machine.event.port.in.ReportPeriod;
 import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEventRepository;
 import com.melexis.test.machineeventreporting.machine.event.port.in.MachineToFocusOn;
@@ -91,5 +92,10 @@ public class JpaMachineEventAdapter implements MachineEventRepository {
     @Override
     public List<MachineToFocusOn> getMachineToFocusOn(ReportPeriod reportPeriod) {
         return machineRepository.getMachineToFocusOn(reportPeriod.getValue());
+    }
+
+    @Override
+    public List<MainIssueForSpecificMachine> getMainIssueForSpecificMachine(ReportPeriod reportPeriod, String machineId) {
+        return machineRepository.getMainIssueForSpecificMachine(reportPeriod.getValue(), machineId);
     }
 }

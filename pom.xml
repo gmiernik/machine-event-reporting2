@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.melexis.test</groupId>
 	<artifactId>machine-event-reporting</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>machine-event-reporting</name>
 	<description>Reporting of machine events</description>
 	<properties>
