@@ -11,12 +11,12 @@ Test project of backend services in hexagonal architecture.
 ### v0.2.0
 
 - Added `Get Machine to focus on` use case
-- Added Machine Event Report REST API 
+- Added `Machine Event Report` REST API 
 
 ### v0.1.0
 
 - Defined Business Domain objects
-- Added `Send Machine Error`port with JMS Adapter
+- Added `Send Machine Error` port with JMS Adapter
 - Added `Machine Event` repository with JPA Adapter
 
 ## How to run
