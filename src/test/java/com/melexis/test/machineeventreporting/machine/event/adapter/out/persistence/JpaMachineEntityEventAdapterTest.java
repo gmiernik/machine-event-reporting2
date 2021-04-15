@@ -3,14 +3,18 @@ package com.melexis.test.machineeventreporting.machine.event.adapter.out.persist
 import com.melexis.test.machineeventreporting.machine.event.domain.ErrorDefinition;
 import com.melexis.test.machineeventreporting.machine.event.domain.Machine;
 import com.melexis.test.machineeventreporting.machine.event.domain.MachineError;
+import com.melexis.test.machineeventreporting.machine.event.port.in.MachineToFocusOn;
+import com.melexis.test.machineeventreporting.machine.event.port.in.ReportPeriod;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.util.Assert;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

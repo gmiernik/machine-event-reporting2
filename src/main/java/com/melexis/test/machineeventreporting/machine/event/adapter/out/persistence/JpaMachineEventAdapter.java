@@ -3,12 +3,15 @@ package com.melexis.test.machineeventreporting.machine.event.adapter.out.persist
 import com.melexis.test.machineeventreporting.machine.event.domain.ErrorDefinition;
 import com.melexis.test.machineeventreporting.machine.event.domain.Machine;
 import com.melexis.test.machineeventreporting.machine.event.domain.MachineError;
+import com.melexis.test.machineeventreporting.machine.event.port.in.ReportPeriod;
 import com.melexis.test.machineeventreporting.machine.event.port.out.MachineEventRepository;
+import com.melexis.test.machineeventreporting.machine.event.port.in.MachineToFocusOn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -83,5 +86,10 @@ public class JpaMachineEventAdapter implements MachineEventRepository {
                 errorEntity.getTimeStamp(),
                 Machine.create(errorEntity.getMachine().getMachineId(),
                         Machine.MachineType.valueOf(errorEntity.getMachine().getType().getName())));
+    }
+
+    @Override
+    public List<MachineToFocusOn> getMachineToFocusOn(ReportPeriod reportPeriod) {
+        return machineRepository.getMachineToFocusOn(reportPeriod.getValue());
     }
 }
